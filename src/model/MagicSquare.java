@@ -16,6 +16,9 @@ public class MagicSquare {
 		matrix = new int[s][s];
 		
 	}
+	public int[][] getMatrix() {
+		return matrix;
+	}
 /**
  * 
  * @param size
@@ -71,12 +74,11 @@ public class MagicSquare {
 	int dirmov = 0;
 	int tamanio = matrix.length-1;
 	int sis = (size*size);
-	String a = "";
 	if(pos.equalsIgnoreCase("UP")) {
 		matrix[row][col]= in;
 		 if(dir.equalsIgnoreCase("NW")){
 			 dirmov = -1;
-			while(contador<(size*size)) {
+			while(contador<sis) {
 						pasposc = col;
 						pasposr = row;
 						col+=dirmov;
@@ -104,7 +106,7 @@ public class MagicSquare {
 				}
 		 } if(dir.equalsIgnoreCase("NE")){
 				 dirmov = -1;
-					while(contador<(size*size)) {
+					while(contador<sis) {
 						pasposc = col;
 						pasposr = row;
 						col = col+1;
@@ -160,7 +162,7 @@ public class MagicSquare {
 				matrix[row][col]=in;
 				 if(dir.equals("SW")){
 					 dirmov = -1;
-						while(contador<=(size*size)) {
+						while(contador<=sis) {
 							        pasposc = col;
 									pasposr = row;
 									col+=dirmov;
@@ -195,7 +197,7 @@ public class MagicSquare {
 						}
 				 if(dir.equals("SE")){
 					 dirmov = -1;
-						while(contador<=(size*size)) {
+						while(contador<=sis) {
 							pasposc = col;
 							pasposr = row;
 							col = col+1;
@@ -240,7 +242,7 @@ public class MagicSquare {
 
 					if(dir.equals("NW")){
 						dirmov = -1;
-						while(contador<=(size*size)) {								 
+						while(contador<=sis) {								 
 									pasposc = col;
 									pasposr = row;
 									col+=dirmov;
@@ -287,7 +289,7 @@ public class MagicSquare {
 					}
 					if(dir.equals("SW")){
 						dirmov = -1;
-						while(contador<=(size*size)) {
+						while(contador<=sis) {
 									pasposc = col;
 									pasposr = row;
 									col+=dirmov;
@@ -333,7 +335,7 @@ public class MagicSquare {
 					matrix[row][col]=in;
 					if(dir.equals("NE")){
 						 dirmov = -1;
-							while(contador<=(size*size)) {
+							while(contador<=sis) {
 								 contador++;
 								pasposc = col;
 								pasposr = row;
@@ -379,7 +381,7 @@ public class MagicSquare {
 					}
 					if(dir.equals("SE")){
 						 dirmov = -1;
-							while(contador<=(size*size)) {
+							while(contador<=sis) {
 								pasposc = col;
 								pasposr = row;
 								col = col+1;

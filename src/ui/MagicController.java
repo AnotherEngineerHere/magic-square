@@ -1,11 +1,11 @@
 package ui;
 import model.*;
+
+import java.util.InputMismatchException;
+
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -13,13 +13,13 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class MagicController {
 		String chosen = "";
+		
+		private MagicSquare ms;
 	  @FXML
 	    private TextField sizeTF;
 
@@ -33,7 +33,7 @@ public class MagicController {
 	    private Pane containerPane;
 
 	    @FXML
-	    private GridPane m	atrixPane;
+	    private GridPane matrixPane;
 
 	    @FXML
 	    private Label verifyLabel;
@@ -98,28 +98,38 @@ public class MagicController {
      * @param event
      */
     public void showMatrix(ActionEvent event) {
-    	String b =(String)startPositionCB.getValue();
-    	int s = Integer.parseInt(sizeTF.getText());
-    	if(s%2 !=0) {
-    	MagicSquare ms = new MagicSquare(s);
-    	String c=((String)startPositionCB.getValue());
-    	GridPane gp = new GridPane();  
-    	gp.setAlignment(Pos.CENTER);
-    	gp.setHgap(10);
-    	gp.setVgap(10);
-    	ms.calculate(c, chosen);
-    	
+    	try {
+    		
+    		int s = Integer.parseInt(sizeTF.getText());
+	    	ms = new MagicSquare(s);
+	    	if(ms.isOddNumber(s)&s>1){
+	    	String c=((String)startPositionCB.getValue());
+	    	GridPane gp = new GridPane();  
+	    	gp.setAlignment(Pos.CENTER);
+	    	gp.setHgap(10);
+	    	gp.setVgap(10);
+	    	ms.calculate(c, chosen);
+	    	
     	for(int i = 0; i<s; i++) {
     		for(int j = 0; j<s; j++) {
-    			gp.add(new Button (ms.printMatrix(i, j)), j, i);
+    			gp.add(new Label (ms.printMatrix(i, j)), j, i);
     		}
     	}
-    	verifyLabel.setText("La constante magia es: "+ms.magicVerify());
+    	verifyLabel.setText("The magical constant is : "+ms.magicVerify());
     	containerPane.getChildren().clear();
     	containerPane.getChildren().add(gp);
-    	}else {
-			verifyLabel.setText("The number is not even");
+    		}
+    		else {
+    		verifyLabel.setText("The number is not odd");
+			}
+    	} catch (NumberFormatException e) {
+			verifyLabel.setText("Write only numbers");
 		}
+    	
+    	
     }	   
+    public void hightlight() {
+		
+	}
 
 }

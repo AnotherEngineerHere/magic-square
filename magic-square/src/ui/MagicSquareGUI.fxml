@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MagicController">
+   <children>
+      <Label layoutX="26.0" layoutY="14.0" text="Size" />
+      <Label layoutX="372.0" layoutY="14.0" text="Direction" />
+      <Label layoutX="79.0" layoutY="15.0" prefHeight="5.0" prefWidth="71.0" text="Start Position" />
+      <TextField fx:id="sizeTF" layoutX="17.0" layoutY="36.0" prefHeight="40.0" prefWidth="40.0">
+         <padding>
+            <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+         </padding>
+      </TextField>
+      <ComboBox fx:id="startPositionCB" layoutX="161.0" layoutY="10.0" onAction="#changeButName" prefWidth="150.0" promptText="Select an option">
+                 <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:id="UP" fx:value="UP" />
+                    <String fx:id="DOWN" fx:value="DOWN" />
+                    <String fx:id="LEFT" fx:value="LEFT" />
+                    <String fx:id="RIGHT" fx:value="RIGHT" />
+                </FXCollections>
+            </items>
+ 	</ComboBox>
+      <Button layoutX="632.0" layoutY="10.0" mnemonicParsing="false" onAction="#showMatrix" text="Do it!" />
+      <ScrollPane fx:id="Sp" layoutX="246.0" layoutY="111.0">
+         <content>
+            <Pane fx:id="containerPane">
+               <children>
+                  <GridPane fx:id="MatrixPane1">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </Pane>
+         </content>
+      </ScrollPane>
+      <Label fx:id="verifyLabel" layoutX="235.0" layoutY="59.0">
+         <font>
+            <Font name="Book Antiqua" size="22.0" />
+         </font></Label>
+      <RadioButton fx:id="RadBut1" layoutX="448.0" layoutY="14.0" mnemonicParsing="false" onAction="#rB1">
+         <toggleGroup>
+            <ToggleGroup fx:id="DirGroup" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="RadBut2" layoutX="448.0" layoutY="36.0" mnemonicParsing="false" onAction="#rB2" toggleGroup="$DirGroup" />
+   </children>
+   <padding>
+      <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+   </padding>
+</AnchorPane>
